@@ -1,6 +1,7 @@
 import {useState} from 'react'
 
 
+
 export default function Signup({ handleSignup }) {
 
   const [fullname, setFullname] = useState("");
@@ -8,6 +9,8 @@ export default function Signup({ handleSignup }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmpassword, setConfirmpassword] = useState("");
+
+  const [pride_community, setPrideCommunity] = useState(false);
 
   
 
@@ -70,9 +73,29 @@ export default function Signup({ handleSignup }) {
               value={confirmpassword} onChange={(e)=>{setConfirmpassword(e.target.value)}}
             ></input>
           </div>
+          <div className="form-control my-4">
+            <label className="block text-md font-medium text-indigo-500 mb-3">
+              Pride Community
+            </label>
+            <input
+              className="block rounded border-gray-300"
+              type="checkbox"
+              checked={pride_community} onChange={(e)=>{setPrideCommunity(!pride_community)}}
+            ></input>
+          </div>
 
           <div className="w-full mt-5">
-            <button className="w-full bg-indigo-500 p-3 rounded-md text-white transition duration-500 ease-in-out transform hover:bg-indigo-700" onClick={()=>{handleSignup({fullname:fullname,email:email,username:username,password:password,confirmpassword:confirmpassword})}}>
+            <button className="w-full bg-indigo-500 p-3 rounded-md text-white transition duration-500 ease-in-out transform hover:bg-indigo-700" onClick={()=>{
+              handleSignup({fullname:fullname,email:email,username:username,password:password,confirmpassword:confirmpassword, pride_community:pride_community})
+
+              setPassword("")
+              setEmail("")
+              setUsername("")
+              setConfirmpassword("")
+              setFullname("")
+              setPrideCommunity(false)
+            
+            }}>
               Signup
             </button>
           </div>

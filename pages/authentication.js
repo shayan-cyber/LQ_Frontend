@@ -3,6 +3,7 @@ import Signup from "../components/Signup";
 import { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
+import validator from 'validator'
 
 export default function Authentication() {
 
@@ -46,24 +47,49 @@ export default function Authentication() {
 
     console.log(data);
     for(const i in data){
-      if(!data[i]){
+      if(!data[i] && i !== 'pride_community'){
         setError(`Please enter the ${i}`);
+        // console.log(i, data[i]);
         return
       }
     }
 
+    if(!validator.isEmail(data.email)){
+      setError("Please enter a valid email")
+      return
+    }
 
+    if(data.password !== data.confirmpassword){
+      setError("Passwords do not match !!")
+      return
+    }
 
+   
 
 
     axios
       .post("http://127.0.0.1:8000/api/auth/register-user/", data)
       .catch((err) =>{
         console.log(err);
+        setError("Something went wrong")
       })
       .then((response) => {
+
+        if(response){
+          if(response.status !== 201){
+            setError(response.data.message)
+          }
+          else if(response.status === 201){
+            setSuccess("Sign up successfull")
+            setToken("token", response.data.token)
+
+            setError("")
+          }else{
+            setError("Something went wrong")
+          }
+        }
         console.log(response);
-        setError("")
+        
       });
   };
 
