@@ -7,7 +7,7 @@ import validator from 'validator'
 
 export default function Authentication() {
 
-  const [token, setToken] = useCookies(["token"]);
+  const [cookie, setCookie] = useCookies(["token"]);
 
 
   const [toggle, setToggle] = useState(false);
@@ -32,7 +32,7 @@ export default function Authentication() {
             if(response.status === 200){
                 setError("")
                 setSuccess("Login successful")
-                setToken("token", response.data.token)
+                setCookie("token", response.data.token)
             }
         }
       
@@ -81,7 +81,7 @@ export default function Authentication() {
           }
           else if(response.status === 201){
             setSuccess("Sign up successfull")
-            setToken("token", response.data.token)
+            setCookie("token", response.data.token)
 
             setError("")
           }else{
@@ -99,7 +99,7 @@ export default function Authentication() {
 
   return (
     <>
-      <div className="container px-2">
+      <div className="container px-2 mb-16">
         <div
           className={
             error
