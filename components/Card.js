@@ -1,6 +1,7 @@
 import {useState, useEffect} from 'react'
 import axios from "axios";
 import { useCookies } from "react-cookie"
+import Comment from './Comments'
 
 
 export default function Card({ post }) {
@@ -17,6 +18,7 @@ export default function Card({ post }) {
   const [singlepost, setSinglePost] = useState(post)
   const [happiescount, sethappiescount] = useState(singlepost.happies_count)
   const [happyprofs, setHappyProfs] = useState(singlepost.happy_profs)
+  const [commenttoggle, setCommentToggle] = useState(false)
  
 
   const addhappy = (data) => {
@@ -110,13 +112,18 @@ export default function Card({ post }) {
             </button>
           </div>
           <div className="mr-4">
-            <button className="text-sm rounded-md hover:bg-gray-100 hover:text-red-500 p-2 text-gray-500 font-medium text-opacity-90">
-              0{" "}
+            <button className="text-sm rounded-md hover:bg-gray-100 hover:text-red-500 p-2 text-gray-500 font-medium text-opacity-90" onClick={()=>setCommentToggle(!commenttoggle)}>
+              {singlepost.comments_count}{" "}
               <i className="fal fa-comment-alt-lines  font-medium text-opacity-75 "></i>
             </button>
           </div>
         </div>
+        
+        <Comment toggle={commenttoggle?true:false} comments={singlepost.comments} post_id={singlepost.id} />
       </div>
+      
+
+
     </div>
   );
 }
