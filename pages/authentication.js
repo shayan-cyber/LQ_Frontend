@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from "axios";
 import { useCookies } from "react-cookie";
 import validator from 'validator'
+import Head from 'next/head'
 
 export default function Authentication() {
 
@@ -99,6 +100,9 @@ export default function Authentication() {
 
   return (
     <>
+      <Head>
+        <title>Signup</title>
+      </Head>
       <div className="container px-2 mb-16">
         <div
           className={
