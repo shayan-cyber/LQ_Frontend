@@ -20,7 +20,7 @@ export default function Navbar({toggleDark, isDark}){
 
     return (
 
-        <nav className="sticky top-0 bg-white py-3 px-2 container flex justify-between shadow-md mb-2">
+        <nav className="sticky z-20 top-0 bg-white py-3 px-2 container flex justify-between shadow-md mb-2">
           <div className="flex justify-start self-center">
             <Link href="/">
               <a className="text-red-500 mx-3 font-medium text-md md:text-2xl text-opacity-75 hover:text-opacity-100">
@@ -34,7 +34,7 @@ export default function Navbar({toggleDark, isDark}){
               </a>
             </Link>
 
-            <Link href="/job">
+            <Link href="/job-portal/jobs">
               <a className="text-red-500 mx-3 font-medium text-md md:text-2xl text-opacity-75 hover:text-opacity-100">
                 Job
               </a>
