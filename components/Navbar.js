@@ -40,6 +40,12 @@ export default function Navbar({toggleDark, isDark}){
               </a>
             </Link>
 
+            <Link href="/learning">
+              <a className="text-red-500 mx-3 font-medium text-md md:text-2xl text-opacity-75 hover:text-opacity-100">
+               Learning
+              </a>
+            </Link>
+
 
             {auth_token ? (
         
