@@ -4,7 +4,7 @@ import Link from "next/link";
 export default function ContentCard({ title, description, id, isCat }) {
   return (
     <>
-      <div className="relative w-full">
+      <div className="relative w-full mt-[20px]">
         <div className="absolute z-0 bg-gradient-to-r from-green-400 to-blue-500 h-60 my-2 px-1 w-full  rounded-md top-0 transform -skew-y-6"></div>
         <div className="mt-5 z-10 px-1 w-full  h-56  relative">
           <div className="bg-gray-100 dark:bg-gray-800 overflow-hidden h-full rounded-lg shadow-md">
@@ -30,7 +30,7 @@ export default function ContentCard({ title, description, id, isCat }) {
                   </a>
                 </Link>
               ) : (
-                <Link href="/">
+                <Link href={`/learning/content/${id}`}>
                   <a className="flex items-center no-underline hover:underline text-black dark:text-gray-200">
                     <p className="text-sm mr-2">Read More</p>
 

@@ -141,7 +141,7 @@ export default function Layout({ children }) {
 
             {/* notification icon start */}
 
-            <a href="#" className="pl-3 md:px-10 flex mt-3 text-3xl">
+            <a href="/job-portal/add-job" className="pl-3 md:px-10 flex mt-3 text-3xl">
               <MdAddCircle/>
             </a>
 
